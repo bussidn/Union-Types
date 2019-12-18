@@ -41,4 +41,22 @@ class CardGameTest {
 
         assertThat(score).isEqualTo(3);
     }
+
+    @Test
+    void score_should_be_five_when_deck_contains_one_spades_and_one_diamond() {
+        Deck deck = Deck.with(Card.SPADE, Card.DIAMOND);
+
+        Integer score = deck.score();
+
+        assertThat(score).isEqualTo(5);
+    }
+
+    @Test
+    void score_should_be_nine_when_deck_contains_one_spades_and_one_club() {
+        Deck deck = Deck.with(Card.SPADE, Card.CLUB);
+
+        Integer score = deck.score();
+
+        assertThat(score).isEqualTo(9);
+    }
 }

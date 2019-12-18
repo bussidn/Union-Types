@@ -12,6 +12,10 @@ interface Card {
             return 1;
         else if (this instanceof Heart)
             return 2;
+        else if (this instanceof Diamond)
+            return 4;
+        else if (this instanceof Club)
+            return 8;
         throw new RuntimeException(new IllegalAccessException());
     }
 
