@@ -7,31 +7,42 @@ interface Card {
     Diamond DIAMOND = Diamond.INSTANCE;
     Club CLUB = Club.INSTANCE;
 
-    default int score() {
-        if (this instanceof Spade)
-            return 1;
-        else if (this instanceof Heart)
-            return 2;
-        else if (this instanceof Diamond)
-            return 4;
-        else if (this instanceof Club)
-            return 8;
-        throw new RuntimeException(new IllegalAccessException());
-    }
+    int score();
+
 
     enum Spade implements Card {
-        INSTANCE
+        INSTANCE;
+
+        @Override
+        public int score() {
+            return 1;
+        }
     }
 
     enum Heart implements Card {
-        INSTANCE
+        INSTANCE;
+
+        @Override
+        public int score() {
+            return 2;
+        }
     }
 
     enum Diamond implements Card {
-        INSTANCE
+        INSTANCE;
+
+        @Override
+        public int score() {
+            return 4;
+        }
     }
 
     enum Club implements Card {
-        INSTANCE
+        INSTANCE;
+
+        @Override
+        public int score() {
+            return 8;
+        }
     }
 }
