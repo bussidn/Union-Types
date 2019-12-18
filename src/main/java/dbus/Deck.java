@@ -7,8 +7,7 @@ import java.util.function.Consumer;
 
 class Deck {
     private final List<Card> cards;
-    private final StandardScoreCalculator standardScoreCalculator = new StandardScoreCalculator();
-    private final ToString toStringFunction = new ToString();
+    private final CalculateStandardScore calculateStandardScore = CalculateStandardScore.INSTANCE;
 
     private Deck(List<Card> cards) {
         this.cards = cards;
@@ -29,11 +28,11 @@ class Deck {
     Integer score() {
         return cards.stream()
                 .peek(printCard())
-                .mapToInt(card -> card.visit(standardScoreCalculator))
+                .mapToInt(calculateStandardScore)
                 .sum();
     }
 
     private Consumer<Card> printCard() {
-        return card -> System.out.println(card.visit(toStringFunction));
+        return card -> System.out.println(card.toString());
     }
 }

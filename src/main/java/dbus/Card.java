@@ -1,5 +1,7 @@
 package dbus;
 
+import java.util.function.Function;
+
 interface Card {
 
     Spade SPADE = Spade.INSTANCE;
@@ -7,22 +9,28 @@ interface Card {
     Diamond DIAMOND = Diamond.INSTANCE;
     Club CLUB = Club.INSTANCE;
 
-
-    <T> T visit(CardVisitor<T> cardVisitor);
+    <R> R match(
+            Function<Spade, R> spadeCase,
+            Function<Heart, R> heartCase,
+            Function<Diamond, R> diamondCase,
+            Function<Club, R> clubCase
+    );
 
     enum Spade implements Card {
         INSTANCE;
 
-        public <T> T visit(CardVisitor<T> cardVisitor) {
-            return cardVisitor.visit(this);
+        @Override
+        public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
+            return spadeCase.apply(this);
         }
     }
 
     enum Heart implements Card {
         INSTANCE;
 
-        public <T> T visit(CardVisitor<T> cardVisitor) {
-            return cardVisitor.visit(this);
+        @Override
+        public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
+            return heartCase.apply(this);
         }
 
     }
@@ -30,8 +38,9 @@ interface Card {
     enum Diamond implements Card {
         INSTANCE;
 
-        public <T> T visit(CardVisitor<T> cardVisitor) {
-            return cardVisitor.visit(this);
+        @Override
+        public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
+            return diamondCase.apply(this);
         }
 
     }
@@ -40,8 +49,8 @@ interface Card {
         INSTANCE;
 
         @Override
-        public <T> T visit(CardVisitor<T> cardVisitor) {
-            return cardVisitor.visit(this);
+        public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
+            return clubCase.apply(this);
         }
 
     }
