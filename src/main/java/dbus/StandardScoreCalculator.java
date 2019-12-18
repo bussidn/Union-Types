@@ -1,6 +1,6 @@
 package dbus;
 
-public class StandardScoreCalculator implements Visitor<Integer>{
+public class StandardScoreCalculator implements CardVisitor<Integer> {
     @Override
     public Integer visit(Card.Spade spade) {
         return 1;

@@ -8,21 +8,21 @@ interface Card {
     Club CLUB = Club.INSTANCE;
 
 
-    <T> T visit(Visitor<T> visitor);
+    <T> T visit(CardVisitor<T> cardVisitor);
 
     enum Spade implements Card {
         INSTANCE;
 
-        public <T> T visit(Visitor<T> visitor) {
-            return visitor.visit(this);
+        public <T> T visit(CardVisitor<T> cardVisitor) {
+            return cardVisitor.visit(this);
         }
     }
 
     enum Heart implements Card {
         INSTANCE;
 
-        public <T> T visit(Visitor<T> visitor) {
-            return visitor.visit(this);
+        public <T> T visit(CardVisitor<T> cardVisitor) {
+            return cardVisitor.visit(this);
         }
 
     }
@@ -30,8 +30,8 @@ interface Card {
     enum Diamond implements Card {
         INSTANCE;
 
-        public <T> T visit(Visitor<T> visitor) {
-            return visitor.visit(this);
+        public <T> T visit(CardVisitor<T> cardVisitor) {
+            return cardVisitor.visit(this);
         }
 
     }
@@ -40,8 +40,8 @@ interface Card {
         INSTANCE;
 
         @Override
-        public <T> T visit(Visitor<T> visitor) {
-            return visitor.visit(this);
+        public <T> T visit(CardVisitor<T> cardVisitor) {
+            return cardVisitor.visit(this);
         }
 
     }

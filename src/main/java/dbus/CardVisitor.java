@@ -1,6 +1,6 @@
 package dbus;
 
-interface Visitor<T> {
+interface CardVisitor<T> {
     T visit(Card.Spade spade);
     T visit(Card.Heart heart);
     T visit(Card.Diamond diamond);
