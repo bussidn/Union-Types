@@ -6,6 +6,7 @@ import java.util.List;
 
 class Deck {
     private final List<Card> cards;
+    private final StandardScoreCalculator standardScoreCalculator = new StandardScoreCalculator();
 
     private Deck(List<Card> cards) {
         this.cards = cards;
@@ -25,7 +26,7 @@ class Deck {
 
     Integer score() {
         return cards.stream()
-                .mapToInt(Card::score)
+                .mapToInt(card -> card.visit(standardScoreCalculator))
                 .sum();
     }
 }
