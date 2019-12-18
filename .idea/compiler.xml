@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Union-Types" target="1.5" />
+      <module name="Union-Types" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>
