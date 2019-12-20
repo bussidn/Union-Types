@@ -4,10 +4,10 @@ import java.util.function.Function;
 
 interface Card {
 
-    Spade SPADE = Spade.INSTANCE;
-    Heart HEART = Heart.INSTANCE;
-    Diamond DIAMOND = Diamond.INSTANCE;
-    Club CLUB = Club.INSTANCE;
+    Spade SPADE = Spade.SPADE;
+    Heart HEART = Heart.HEART;
+    Diamond DIAMOND = Diamond.DIAMOND;
+    Club CLUB = Club.CLUB;
 
     <R> R match(
             Function<Spade, R> spadeCase,
@@ -17,7 +17,7 @@ interface Card {
     );
 
     enum Spade implements Card {
-        INSTANCE;
+        SPADE;
 
         @Override
         public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
@@ -26,7 +26,7 @@ interface Card {
     }
 
     enum Heart implements Card {
-        INSTANCE;
+        HEART;
 
         @Override
         public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
@@ -36,7 +36,7 @@ interface Card {
     }
 
     enum Diamond implements Card {
-        INSTANCE;
+        DIAMOND;
 
         @Override
         public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
@@ -46,7 +46,7 @@ interface Card {
     }
 
     enum Club implements Card {
-        INSTANCE;
+        CLUB;
 
         @Override
         public <R> R match(Function<Spade, R> spadeCase, Function<Heart, R> heartCase, Function<Diamond, R> diamondCase, Function<Club, R> clubCase) {
