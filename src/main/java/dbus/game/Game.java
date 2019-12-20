@@ -1,8 +1,12 @@
-package dbus;
+package dbus.game;
+
+import dbus.card.Card;
+import dbus.deck.Deck;
+import dbus.score.calcultaor.ScoreCalculator;
 
 import java.util.function.Function;
 
-import static dbus.ScoreCalculator.scoreCalculatorFor;
+import static dbus.score.calcultaor.ScoreCalculator.scoreCalculatorFor;
 
 final public class Game {
 
@@ -38,7 +42,7 @@ final public class Game {
         return deck.calculateScoreWith(cardScoreCalculator);
     }
 
-    interface Mode {
+    public interface Mode {
 
         Standard STANDARD = Standard.STANDARD;
         Beginner BEGINNER = Beginner.BEGINNER;

@@ -1,6 +1,8 @@
-package dbus;
+package dbus.score.calcultaor;
 
-public enum CalculateBeginnerScore implements ScoreCalculator<Card> {
+import dbus.card.Card;
+
+public enum CalculateBeginnerCardScore implements ScoreCalculator<Card> {
     INSTANCE;
 
     public int score(Card card) {

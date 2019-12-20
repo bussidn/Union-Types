@@ -1,11 +1,14 @@
-package dbus;
+package dbus.deck;
+
+import dbus.card.Card;
+import dbus.score.calcultaor.ScoreCalculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-class Deck {
+public class Deck {
     private final List<Card> cards;
 
     private Deck(List<Card> cards) {
@@ -16,15 +19,15 @@ class Deck {
         this.cards = new ArrayList<>();
     }
 
-    static Deck empty() {
+    public static Deck empty() {
         return new Deck();
     }
 
-    static Deck with(Card... card) {
+    public static Deck with(Card... card) {
         return new Deck(new ArrayList<>(Arrays.asList(card)));
     }
 
-    int calculateScoreWith(ScoreCalculator<Card> cardScoreCalculator) {
+    public int calculateScoreWith(ScoreCalculator<Card> cardScoreCalculator) {
         return cards.stream()
                 .peek(printCard())
                 .mapToInt(cardScoreCalculator)

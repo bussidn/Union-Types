@@ -1,4 +1,7 @@
-package dbus;
+package dbus.score.calcultaor;
+
+import dbus.card.Card;
+import dbus.game.Game;
 
 import java.util.function.ToIntFunction;
 
@@ -14,8 +17,8 @@ public interface ScoreCalculator<T> extends ToIntFunction<T>{
 
     static ScoreCalculator<Card> scoreCalculatorFor(Game.Mode mode) {
         return mode.match(
-                STD -> CalculateStandardScore.INSTANCE,
-                BEG -> CalculateBeginnerScore.INSTANCE
+                STD -> CalculateStandardCardScore.INSTANCE,
+                BEG -> CalculateBeginnerCardScore.INSTANCE
         );
     }
 }

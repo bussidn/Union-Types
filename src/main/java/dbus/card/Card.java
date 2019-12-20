@@ -1,8 +1,8 @@
-package dbus;
+package dbus.card;
 
 import java.util.function.Function;
 
-interface Card {
+public interface Card {
 
     Spade SPADE = Spade.SPADE;
     Heart HEART = Heart.HEART;
